@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.mycurrency.main_page.interactor.CurrencyInteractor
 import com.example.mycurrency.main_page.model.CurrencyDataInfo
 import com.example.mycurrency.utils.Constants
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -14,10 +16,12 @@ import timber.log.Timber
 class MainPageViewModel(
     private val interactor: CurrencyInteractor
 ) : ViewModel() {
-
+    val coroutineScope = CoroutineScope(Dispatchers.Main)
      private val _currencyFlow = MutableSharedFlow<CurrencyDataInfo>()
     val currencyFlow: SharedFlow<CurrencyDataInfo>
         get() = _currencyFlow.asSharedFlow()
+
+
 
     fun getCurrency(
         apikey: String,
@@ -37,7 +41,11 @@ class MainPageViewModel(
             } catch (t: Throwable) {
                 Timber.e("error ---->${t.message}")
             }
-
         }
     }
+
+//    fun updateCurrency(firstNumber : Float, ){
+//        val sum =
+//    }
+
 }

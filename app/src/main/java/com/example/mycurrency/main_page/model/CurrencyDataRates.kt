@@ -5,16 +5,16 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class CurrencyDataRates(
-    val aud: Double,
-    val bgn: Double,
-    val brl: Double,
-    val cad: Double,
-    val chf: Double,
-    val cny: Double,
-    val czk: Double,
-    val dkk: Double,
-    val eur: Double,
-    val jpy: Double,
-    val rub: Double,
-    val usd: Double
+    val aud: Float,
+    val bgn: Float,
+    val brl: Float,
+    val cad: Float,
+    val chf: Float,
+    val cny: Float,
+    val czk: Float,
+    val dkk: Float,
+    val eur: Float,
+    val jpy: Float,
+    val rub: Float,
+    val usd: Float
 ):Parcelable
