@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "572423479417",
+    "project_id": "login-register-firebase-alex",
+    "storage_bucket": "login-register-firebase-alex.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572423479417:android:6a0d3397f45da559f4b4a8",
+        "android_client_info": {
+          "package_name": "com.example.mycurrency"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "572423479417-6kl0v8h2h8frus6oateqt3bpiro06195.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3qGgJSIg9xoRKZ6FABzYJoclW_gTwWZw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "572423479417-6kl0v8h2h8frus6oateqt3bpiro06195.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
