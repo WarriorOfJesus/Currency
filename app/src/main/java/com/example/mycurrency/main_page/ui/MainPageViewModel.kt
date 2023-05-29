@@ -6,6 +6,7 @@ import com.example.mycurrency.main_page.interactor.CurrencyInteractor
 import com.example.mycurrency.main_page.model.CurrencyDataInfo
 import com.example.mycurrency.main_page.model.CurrencyEnum
 import com.example.mycurrency.utils.Constants
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -34,7 +35,7 @@ class MainPageViewModel(
         get() = _isLoading.asStateFlow()
 
     private val _leftCurrency = MutableStateFlow(0)
-    val leftRate: StateFlow<Int>
+    private val leftRate: StateFlow<Int>
         get() = _leftCurrency.asStateFlow()
 
 
@@ -53,6 +54,8 @@ class MainPageViewModel(
                 updateRate(_secondaryCurrency.value)
 
                 Timber.i("--->> viewModel :$data")
+            } catch (e: CancellationException) {
+                Timber.e("error ---->${e.message}")
             } catch (t: Throwable) {
                 Timber.e("error ---->${t.message}")
             } finally {
@@ -91,8 +94,8 @@ class MainPageViewModel(
         _secondarySum.value = sum
     }
 
-    fun addLeftCurrency(text: String?){
-        if(text == null) return
+    fun addLeftCurrency(text: String?) {
+        if (text == null) return
         val leftCurrency = text.toIntOrNull() ?: 0
         _leftCurrency.value = leftCurrency
 

@@ -46,7 +46,6 @@ class MainFragment : BaseFragment() {
         setObserves()
         clickButtons()
         viewModel.getCurrency(CurrencyEnum.USD.name)
-
     }
 
     private fun clickButtons() {
