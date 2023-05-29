@@ -17,7 +17,7 @@ import timber.log.Timber
 class RegistrationFragment : Fragment() {
 
 
-    lateinit var binding: FragmentRegistrationBinding
+    private lateinit var binding: FragmentRegistrationBinding
 
 
     override fun onCreateView(
