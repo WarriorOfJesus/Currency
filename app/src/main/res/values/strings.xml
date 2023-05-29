@@ -14,4 +14,9 @@
     <string name="log_in">Log in</string>
     <string name="sign_in">SIGN IN</string>
     <string name="list_label">Items</string>
+    <string name="REGISTER">register</string>
+    <string name="button_of_register">if you don\'t have an account, please proceed to registration</string>
+    <string name="register">REGISTER</string>
+    <string name="enter">enter</string>
+    <string name="logout">Logout</string>
 </resources>

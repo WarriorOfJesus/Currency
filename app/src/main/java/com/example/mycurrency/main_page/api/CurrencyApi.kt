@@ -11,7 +11,6 @@ interface CurrencyApi {
     suspend fun getCurrencyDataInfo(
         @Query("apikey") apiKey: String,
         @Query("currencies") currencies: String,
-//        @Query("base_currency") baseCurrency: String
     ): DataInfoResponse
 
 
@@ -19,5 +18,6 @@ interface CurrencyApi {
    suspend fun getCurrencyDataRates(
         @Query("apikey") apiKey: String,
         @Query("currencies") currencies: String,
+        @Query("base_currency") baseCurrency: String
     ): DataRatesResponse
 }

@@ -6,17 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.doOnAttach
 import androidx.core.view.doOnDetach
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mycurrency.common.mvvm.BaseFragment
-import com.example.mycurrency.databinding.FragmentCurrencyTransferBinding
 import com.example.mycurrency.databinding.FragmentMainBinding
 import com.example.mycurrency.main_page.model.Currency
-import com.example.mycurrency.main_page.model.CurrencyDataInfo
+import com.example.mycurrency.main_page.model.CurrencyEnum
 import com.example.mycurrency.main_page.ui.adapter.AdapterCurrency
-import com.example.mycurrency.utils.Constants
 import com.example.mycurrency.utils.replace
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 
 class MainFragment : BaseFragment() {
@@ -40,25 +40,48 @@ class MainFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.recyclerView.adapter = adapter
+        onAttachRecycler()
+        onDetachRecycler()
+        setObserves()
+        clickButtons()
+        viewModel.getCurrency(CurrencyEnum.USD.name)
+
+    }
+
+    private fun clickButtons() {
         with(binding) {
-            recyclerView.adapter = adapter
-            recyclerView.doOnAttach {
-                recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            buttonToCurrencyTransfer.setOnClickListener { replace(CurrencyTransferFragment()) }
+            buttonLogout.setOnClickListener {
+                Firebase.auth.signOut()
+                replace(LoginFragment())
             }
+        }
+    }
+
+    private fun onDetachRecycler() {
+        with(binding) {
             recyclerView.doOnDetach {
                 recyclerView.layoutManager = null
             }
-            buttonToCurrencyTransfer.setOnClickListener { replace(CurrencyTransferFragment()) }
-
         }
+    }
 
-        viewModel.getCurrency(Constants.API_KEY, Constants.CURRENCIES, "USD")
-
-
-        observe(viewModel.currencyFlow) {
-            showData(it.currencies)
+    private fun onAttachRecycler() {
+        with(binding) {
+            recyclerView.doOnAttach {
+                recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            }
         }
+    }
 
+    private fun setObserves() {
+        observeNullable(viewModel.currencyFlow) {
+            it?.currencies?.let { it1 -> showData(it1) }
+        }
+        observe(viewModel.isLoading) {
+            binding.progressBarRecycler.isVisible = it
+        }
     }
 
     private fun showData(data: List<Currency>) {

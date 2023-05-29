@@ -1,81 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/cardview_dark_background"
-    tools:context=".main_page.ui.CurrencyTransferFragment">
-
-    <EditText
-        android:id="@+id/editNumberCurrency"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        android:inputType="number"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
-        android:layout_margin="16dp"
-        android:hint="enter"
-        android:textColorHint="@color/yellow"
-        android:padding="16dp"
-        android:textSize="24sp"
-        android:textColor="@color/yellow"
-        android:background="@color/grey"
-
-        />
-    <TextView
-        android:id="@+id/textNumberCurrency"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="16dp"
-        android:text="123"
-        android:padding="16dp"
-        android:textSize="24sp"
-        android:textColor="@color/yellow"
-        android:background="@color/grey"
-
-        />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-
-        android:background="@color/grey"
+    android:layout_height="match_parent">
 
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNumberCurrency">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_dark_background"
+        android:orientation="vertical"
+        tools:context=".main_page.ui.CurrencyTransferFragment">
 
-        <Spinner
-            android:id="@+id/fromCurrency"
+
+        <EditText
+            android:id="@+id/editTextCurrencyAmount"
             android:layout_width="160dp"
             android:layout_height="60dp"
-            tools:listitem="@layout/item_view_currency"
+            android:layout_margin="16dp"
+            android:background="@color/grey"
+            android:hint="@string/enter"
+            android:inputType="number"
+            android:padding="16dp"
+            android:textColor="@color/yellow"
+            android:textColorHint="@color/yellow"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
             />
 
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textNumberCurrency"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/grey"
-        android:layout_margin="16dp">
-
-        <Spinner
-            android:id="@+id/toCurrency"
+        <TextView
+            android:id="@+id/textNumberCurrency"
             android:layout_width="160dp"
             android:layout_height="60dp"
-            tools:listitem="@layout/item_view_currency"
+            android:layout_margin="16dp"
+            android:background="@color/grey"
+            android:padding="16dp"
+            android:textColor="@color/yellow"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
             />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+
+            android:background="@color/grey"
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/editTextCurrencyAmount">
+
+            <Spinner
+                android:id="@+id/fromCurrency"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                tools:listitem="@layout/item_view_currency" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textNumberCurrency">
+
+            <Spinner
+                android:id="@+id/toCurrency"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                tools:listitem="@layout/item_view_currency" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:id="@+id/progressView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AA000000"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:theme="@style/CustomProgressBarTheme" />
+    </RelativeLayout>
+
+</FrameLayout>

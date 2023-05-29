@@ -23,12 +23,17 @@ class CurrencyRemoteRepository(
                 Constants.API_KEY,
                 Constants.CURRENCIES
             )
-        }.await()
+        }
         Timber.i("--->> response : $response")
-        val rate = coroutineScope.async { api.getCurrencyDataRates(Constants.API_KEY, Constants.CURRENCIES/*, "USD"*/) }
-            .await()
+        val rate = coroutineScope.async {
+            api.getCurrencyDataRates(
+                Constants.API_KEY,
+                Constants.CURRENCIES,
+                baseCurrency
+            )
+        }
         Timber.i("--->> rate : $rate")
-        return CurrencyConverter.fromNetwork(response, rate)
+        return CurrencyConverter.fromNetwork(response.await(), rate.await())
     }
 
 }
