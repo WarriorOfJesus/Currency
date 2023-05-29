@@ -17,13 +17,14 @@ import com.example.mycurrency.utils.replace
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainFragment : BaseFragment() {
 
     private lateinit var binding: FragmentMainBinding
 
-    private val viewModel: MainPageViewModel by inject()
+    private val viewModel: MainPageViewModel by viewModel()
 
     private val adapter by lazy { AdapterCurrency() }
 

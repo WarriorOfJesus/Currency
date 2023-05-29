@@ -21,7 +21,7 @@ class CurrencyViewHolder(
         with(binding) {
             nameOfCurrency.text = item.code
             symbolOfCurrency.text = item.symbol
-            rateOfCurrency.text = item.rates.toString()
+            rateOfCurrency.text = item.rates
         }
     }
 }

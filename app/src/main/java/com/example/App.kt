@@ -26,7 +26,7 @@ class App : Application() {
             androidContext(this@App)
             modules(
                 listOf(
-                    NetworkModule().onCreate(),
+                    NetworkModule.onCreate(),
                     MainPageModule.onCreate()
                 )
             )

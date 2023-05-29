@@ -15,16 +15,14 @@ class MainPageViewModel(
     private val interactor: CurrencyInteractor
 ) : ViewModel() {
 
-    var currencyRate: Double? = 0.0
+    private var currencyRate: String? = "0.0"
 
     private val _currencyFlow = MutableStateFlow<CurrencyDataInfo?>(null)
-    val currencyFlow: StateFlow<CurrencyDataInfo?>
-        get() = _currencyFlow.asStateFlow()
+    val currencyFlow = _currencyFlow.asStateFlow()
 
 
     private val _secondarySum = MutableStateFlow(0.0)
-    val secondarySum: StateFlow<Double>
-        get() = _secondarySum.asStateFlow()
+    val secondarySum = _secondarySum.asStateFlow()
 
     private val _baseCurrency = MutableStateFlow(CurrencyEnum.AUD)
 
@@ -35,8 +33,7 @@ class MainPageViewModel(
         get() = _isLoading.asStateFlow()
 
     private val _leftCurrency = MutableStateFlow(0)
-    private val leftRate: StateFlow<Int>
-        get() = _leftCurrency.asStateFlow()
+    private val leftRate = _leftCurrency.asStateFlow()
 
 
     fun getCurrency(
@@ -68,7 +65,7 @@ class MainPageViewModel(
         currencyRate = _currencyFlow.value?.currencies?.find {
             it.code == currency?.name
         }?.rates
-        val rate = currencyRate ?: 0.0
+        val rate = currencyRate?.toDouble() ?: 0.0
         val leftCurrency = leftRate.value.toDouble()
         _secondarySum.value = leftCurrency * rate
 
@@ -90,7 +87,8 @@ class MainPageViewModel(
         if (text.isNullOrEmpty()) _secondarySum.value = 0.0
         if (text == null || currencyRate == null) return
         val number = text.toDoubleOrNull() ?: return
-        val sum = number * currencyRate!!
+        val rate = currencyRate?.toDouble() ?: return
+        val sum = number * rate
         _secondarySum.value = sum
     }
 
@@ -98,7 +96,6 @@ class MainPageViewModel(
         if (text == null) return
         val leftCurrency = text.toIntOrNull() ?: 0
         _leftCurrency.value = leftCurrency
-
     }
 
 }

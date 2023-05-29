@@ -6,12 +6,12 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Currency(
-    val symbol: String?,
-    val name: String?,
-    val symbolNative: String?,
-    val decimalDigits: Int?,
+    val symbol: String,
+    val name: String,
+    val symbolNative: String,
+    val decimalDigits: Int,
     val rounding: Int,
-    val code: String?,
-    val namePlural: String?,
-    val rates : Double?
+    val code: String,
+    val namePlural: String,
+    val rates : String
 ) : Parcelable

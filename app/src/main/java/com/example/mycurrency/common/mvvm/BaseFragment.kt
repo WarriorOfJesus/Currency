@@ -9,7 +9,6 @@ import kotlinx.coroutines.launch
 
 open class BaseFragment : Fragment() {
 
-
     fun <T : Any, F : Flow<T>> observe(flow: F, body: (T) -> Unit) {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) { flow.collect { body(it) } }
