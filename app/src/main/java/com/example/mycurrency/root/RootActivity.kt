@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.mycurrency.databinding.ActivityMainBinding
 import com.example.mycurrency.main_page.ui.LoginFragment
 import com.example.mycurrency.main_page.ui.MainFragment
-import com.example.mycurrency.utils.replace
+import com.example.mycurrency.utils.extensions.replace
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 

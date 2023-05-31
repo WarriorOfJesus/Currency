@@ -13,10 +13,9 @@ import com.example.mycurrency.databinding.FragmentMainBinding
 import com.example.mycurrency.main_page.model.Currency
 import com.example.mycurrency.main_page.model.CurrencyEnum
 import com.example.mycurrency.main_page.ui.adapter.AdapterCurrency
-import com.example.mycurrency.utils.replace
+import com.example.mycurrency.utils.extensions.replace
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -32,9 +31,7 @@ class MainFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-
-
+    ): View{
         binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -43,13 +40,8 @@ class MainFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.adapter = adapter
         onAttachRecycler()
-        onDetachRecycler()
-        setObserves()
-        clickButtons()
-        viewModel.getCurrency(CurrencyEnum.USD.name)
-    }
 
-    private fun clickButtons() {
+        setObserves()
         with(binding) {
             buttonToCurrencyTransfer.setOnClickListener { replace(CurrencyTransferFragment()) }
             buttonLogout.setOnClickListener {
@@ -57,7 +49,9 @@ class MainFragment : BaseFragment() {
                 replace(LoginFragment())
             }
         }
+        viewModel.getCurrency(CurrencyEnum.USD.name)
     }
+
 
     private fun onDetachRecycler() {
         with(binding) {
@@ -90,6 +84,7 @@ class MainFragment : BaseFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+        onDetachRecycler()
         activity?.finish()
     }
 }

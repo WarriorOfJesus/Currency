@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.mycurrency.databinding.FragmentLoginBinding
-import com.example.mycurrency.utils.replace
+import com.example.mycurrency.utils.extensions.replace
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import timber.log.Timber

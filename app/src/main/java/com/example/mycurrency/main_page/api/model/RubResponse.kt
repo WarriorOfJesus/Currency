@@ -12,7 +12,7 @@ data class RubResponse(
     @SerializedName("decimal_digits")
     val decimalDigits: Int?,
     @SerializedName("rounding")
-    val rounding: Int,
+    val rounding: Int?,
     @SerializedName("code")
     val code: String?,
     @SerializedName("name_plural")

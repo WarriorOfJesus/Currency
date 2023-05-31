@@ -1,7 +1,6 @@
 package com.example.mycurrency.main_page.model
 
 import android.os.Parcelable
-import com.example.mycurrency.main_page.api.model.CurrencyDataRatesResponse
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -13,5 +12,5 @@ data class Currency(
     val rounding: Int,
     val code: String,
     val namePlural: String,
-    val rates : String
+    val rates : Double
 ) : Parcelable

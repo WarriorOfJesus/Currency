@@ -1,4 +1,4 @@
-package com.example.mycurrency.utils
+package com.example.mycurrency.utils.extensions
 
 import androidx.annotation.AnimRes
 import androidx.annotation.IdRes

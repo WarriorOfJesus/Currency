@@ -11,6 +11,6 @@ class CurrencyInteractor(
         currencies: String,
         baseCurrency: String
     ): CurrencyDataInfo {
-        return remoteRepository.getCurrencyData(apiKey, currencies, baseCurrency)
+        return remoteRepository.getCurrencyData(apiKey, currencies , baseCurrency)
     }
 }
