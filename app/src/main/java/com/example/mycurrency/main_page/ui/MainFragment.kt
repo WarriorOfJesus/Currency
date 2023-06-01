@@ -1,40 +1,31 @@
 package com.example.mycurrency.main_page.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.doOnAttach
 import androidx.core.view.doOnDetach
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mycurrency.R
 import com.example.mycurrency.common.mvvm.BaseFragment
 import com.example.mycurrency.databinding.FragmentMainBinding
 import com.example.mycurrency.main_page.model.Currency
 import com.example.mycurrency.main_page.model.CurrencyEnum
 import com.example.mycurrency.main_page.ui.adapter.AdapterCurrency
 import com.example.mycurrency.utils.extensions.replace
+import com.example.mycurrency.utils.extensions.viewbinding.viewBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MainFragment : BaseFragment() {
+class MainFragment : BaseFragment(R.layout.fragment_main) {
 
-    private lateinit var binding: FragmentMainBinding
-
+    private val  binding: FragmentMainBinding by viewBinding()
     private val viewModel: MainPageViewModel by viewModel()
 
     private val adapter by lazy { AdapterCurrency() }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View{
-        binding = FragmentMainBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

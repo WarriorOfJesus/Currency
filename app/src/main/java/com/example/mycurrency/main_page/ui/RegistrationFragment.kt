@@ -8,25 +8,19 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.example.mycurrency.R
+import com.example.mycurrency.common.mvvm.BaseFragment
 import com.example.mycurrency.databinding.FragmentRegistrationBinding
 import com.example.mycurrency.utils.extensions.replace
+import com.example.mycurrency.utils.extensions.viewbinding.viewBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import timber.log.Timber
 
-class RegistrationFragment : Fragment() {
+class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
 
 
-    private lateinit var binding: FragmentRegistrationBinding
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentRegistrationBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
+    private val binding: FragmentRegistrationBinding by viewBinding()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

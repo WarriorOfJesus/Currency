@@ -15,7 +15,7 @@ import com.example.mycurrency.databinding.FragmentCurrencyTransferBinding
 import com.example.mycurrency.main_page.model.CurrencyEnum
 import org.koin.android.ext.android.inject
 
-class CurrencyTransferFragment : BaseFragment() {
+class CurrencyTransferFragment : BaseFragment(R.layout.fragment_currency_transfer) {
     lateinit var binding: FragmentCurrencyTransferBinding
 
 

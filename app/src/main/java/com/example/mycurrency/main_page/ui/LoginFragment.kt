@@ -2,28 +2,21 @@ package com.example.mycurrency.main_page.ui
 
 import android.content.ContentValues
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
+import com.example.mycurrency.R
+import com.example.mycurrency.common.mvvm.BaseFragment
 import com.example.mycurrency.databinding.FragmentLoginBinding
 import com.example.mycurrency.utils.extensions.replace
+import com.example.mycurrency.utils.extensions.viewbinding.viewBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import timber.log.Timber
 
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
-    private lateinit var binding: FragmentLoginBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentLoginBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private val  binding: FragmentLoginBinding by viewBinding()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
